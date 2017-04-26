@@ -11,10 +11,15 @@ class AwesomeComponent extends React.Component {
 
   onLike () {
     let newLikesCount = this.state.likesCount + 1;
-    Promise.resolve('resolving a promise').then(
+    //Promise.resolve('resolving a promise').then(
+    //  (x) => this.setState({variable: x}),
+    //  (error) => this.setState({variable: 'NO'})
+    //);
+    Promise.reject('resolving a promise').then(
       (x) => this.setState({variable: x}),
-      (error) => this.setState({variable: 'NO'})
+      (error) => this.setState({variable: 'promise rejected'})
     );
+    this.setState({likesCount: newLikesCount});
     this.setState({likesCount: newLikesCount});
   }
 
