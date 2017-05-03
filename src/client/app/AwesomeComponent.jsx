@@ -4,31 +4,42 @@ class AwesomeComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {likesCount : 0,
-    variable: 'Hello from react'};
+    this.state = {
+      likesCount : 0,
+      variable: 'hola',
+      user: {
+        firstName: props.name,
+        lastName: 'Perez'
+      }
+    };
     this.onLike = this.onLike.bind(this);
+    this.formatName = this.formatName.bind(this);
   }
 
   onLike () {
-    let newLikesCount = this.state.likesCount + 1;
-    //Promise.resolve('resolving a promise').then(
-    //  (x) => this.setState({variable: x}),
-    //  (error) => this.setState({variable: 'NO'})
-    //);
-    Promise.reject('resolving a promise').then(
-      (x) => this.setState({variable: x}),
-      (error) => this.setState({variable: 'promise rejected'})
-    );
-    this.setState({likesCount: newLikesCount});
-    this.setState({likesCount: newLikesCount});
+    // let newLikesCount = this.state.likesCount + 1;
+    // Promise.reject('cualquier pendejada').then(
+    //   (x) => this.setState({variable: x}),
+    //   (error) => this.setState({variable: 'NO'})
+    // );
+    // this.setState({likesCount: newLikesCount});
+    this.setState((oldState, props) => {
+      Object.assign(oldState.user, {firstName: 'Papaya'});
+      return oldState;
+    });
+  }
+
+  formatName (user) {
+    return `${user.firstName} ${user.lastName}`;
   }
 
   render() {
     return (
-      <div>
-        <span>{this.state.variable}</span> <br/>
-        Likes : <span>{this.state.likesCount}</span>
-        <div><button onClick={this.onLike}>Like Me</button></div>
+      <div className={ `camilo test ${this.state.user.firstName}`} id="asdfa">
+        <h1>
+          Hello, {this.formatName(this.state.user)}!
+        </h1>
+        <button onClick={this.onLike}></button>
       </div>
     );
   }
