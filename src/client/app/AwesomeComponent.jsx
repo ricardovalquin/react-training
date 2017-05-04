@@ -10,23 +10,25 @@ class AwesomeComponent extends React.Component {
       user: {
         firstName: props.name,
         lastName: 'Perez'
-      }
+      },
+      inputVal: ''
     };
+    this.inputToShow1 = {value: ''};
+    this.inputToShow2 = {value: ''};
     this.onLike = this.onLike.bind(this);
     this.formatName = this.formatName.bind(this);
   }
 
-  onLike () {
-    // let newLikesCount = this.state.likesCount + 1;
-    // Promise.reject('cualquier pendejada').then(
-    //   (x) => this.setState({variable: x}),
-    //   (error) => this.setState({variable: 'NO'})
-    // );
-    // this.setState({likesCount: newLikesCount});
+  onLike (event) {
     this.setState((oldState, props) => {
       Object.assign(oldState.user, {firstName: 'Papaya'});
       return oldState;
     });
+  }
+
+  handleInputChange (event, inputName) {
+    console.log(event)
+    this.setState({[inputName]: event.target.value});
   }
 
   formatName (user) {
@@ -36,10 +38,21 @@ class AwesomeComponent extends React.Component {
   render() {
     return (
       <div className={ `camilo test ${this.state.user.firstName}`} id="asdfa">
+        <button type="button" onClick={(e) => this.onLike(e)} ></button>
         <h1>
           Hello, {this.formatName(this.state.user)}!
         </h1>
-        <button onClick={this.onLike}></button>
+        <div>
+          {this.state.inputVal}
+          <input type="text" value={this.state.inputVal} onChange={(e)=>this.handleInputChange(e, 'inputVal')}/>
+        </div>
+        <div>
+          {`${this.inputToShow1.value} ${this.inputToShow2.value}`}
+          {/*<input type="text" ref={(valueChanged) => this.inputToShow = valueChanged} />*/}
+          <input type="text" ref={(input) => this.inputToShow1 = input} />
+          <input type="text" ref={(input) => this.inputToShow2 = input} />
+        </div>
+        <button onClick={(e) => this.onLike(e)} ></button>
       </div>
     );
   }

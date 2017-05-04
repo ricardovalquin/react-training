@@ -2,6 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import AwesomeComponent from './AwesomeComponent.jsx';
 import Clock from './Clock.jsx';
+import Calculator from './Calculator.jsx';
 
 class App extends React.Component {
   render () {
@@ -11,11 +12,12 @@ class App extends React.Component {
       <Clock locale="zh-Hans-CN" timeZone="Asia/Shanghai"/>
       <Clock locale="zh-Hans-CN" timeZone="America/New_York"/>
       <Clock locale="us" timeZone="America/New_York"/>
+      <Calculator />
     </div>;
   }
 }
 function mateo(){
-  return'mateo';
+  return 'mateo';
 }
 
 render(<App/>, document.getElementById('app'));
