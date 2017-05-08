@@ -1,6 +1,6 @@
 import React from 'react';
 
-class BoilingVeredic extends React.Component {
+class BoilingVeredict extends React.Component {
 
   constructor(props){
     super(props);
@@ -22,4 +22,4 @@ class BoilingVeredic extends React.Component {
 
 }
 
-export default BoilingVeredic;
+export default BoilingVeredict;
