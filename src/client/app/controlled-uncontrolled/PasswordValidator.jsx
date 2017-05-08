@@ -18,6 +18,8 @@ class PasswordValidator extends React.Component {
           the minimum number of characters for the password is {this.props.minimum}
         </small>
       );
+    }else {
+      return null;
     }
   }
 

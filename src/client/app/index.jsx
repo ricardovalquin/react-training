@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 import AwesomeComponent from './AwesomeComponent.jsx';
 import Clock from './Clock.jsx';
 import Calculator from './Calculator.jsx';
+import LoginForm from './controlled-uncontrolled/LoginForm.jsx';
 
 class App extends React.Component {
   render () {
@@ -13,6 +14,7 @@ class App extends React.Component {
       <Clock locale="zh-Hans-CN" timeZone="America/New_York"/>
       <Clock locale="us" timeZone="America/New_York"/>
       <Calculator />
+      <LoginForm/>
     </div>;
   }
 }

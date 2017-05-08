@@ -15,24 +15,24 @@ class LoginForm extends React.Component {
   }
 
   handlePasswordChange(value) {
-    this.setState({password: value});
+    this.setState(value);
   }
 
   handleSubmit(e) {
-  	this.setState({email: this.email});
-  	console.log(this.state);
+    this.setState({email: this.email});
+    console.log(this.state);
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-      	<label>
-      		email
-        	<input type="email" ref={(input) => this.email = input} />
+        <label>
+          email
+          <input type="email" ref={(input) => this.email = input} />
         </label>
         <ControlledPassword password={this.state.password} minimum="7" onPasswordChange={this.handlePasswordChange}/>
         <input type="submit" value="Submit" />
-      </div>
+      </form>
     );
   }
 
