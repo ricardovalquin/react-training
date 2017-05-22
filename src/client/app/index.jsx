@@ -1,25 +1,36 @@
 import React from 'react';
 import {render} from 'react-dom';
-import AwesomeComponent from './AwesomeComponent.jsx';
-import Clock from './Clock.jsx';
-import Calculator from './Calculator.jsx';
-import LoginForm from './controlled-uncontrolled/LoginForm.jsx';
+import {UIRouter, UIView, UISref, UISrefActive, pushStateLocationPlugin} from 'ui-router-react';
+
+
+let helloState = {
+  name: 'hello',
+  url: '/hello',
+  component: () => <h3>hello world</h3>
+}
+
+let aboutState = {
+  name: 'about',
+  url: '/about',
+  component: () => <h3>Its the UI-Router hello world app!</h3>
+}
 
 class App extends React.Component {
   render () {
-    return <div>
-      <p> Hello React!</p>
-      <AwesomeComponent name="Mateo"/>
-      <Clock locale="zh-Hans-CN" timeZone="Asia/Shanghai"/>
-      <Clock locale="zh-Hans-CN" timeZone="America/New_York"/>
-      <Clock locale="us" timeZone="America/New_York"/>
-      <Calculator />
-      <LoginForm/>
-    </div>;
+    return (
+       <UIRouter plugins={[pushStateLocationPlugin]} states={[helloState, aboutState]}>
+        <div>
+          <UISrefActive class="active">
+            <UISref to="hello"><a>Hello</a></UISref>
+          </UISrefActive>
+          <UISrefActive class="active">
+            <UISref to="about"><a>About</a></UISref>
+          </UISrefActive>
+          <UIView/>
+        </div>
+      </UIRouter>
+    );
   }
-}
-function mateo(){
-  return 'mateo';
 }
 
 render(<App/>, document.getElementById('app'));
