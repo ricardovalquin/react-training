@@ -25,6 +25,21 @@ var config = {
           ]
         },
         exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: (loader) => [
+                require('autoprefixer')()
+              ]
+            }
+          }
+        ]
       }
     ]
   },
@@ -32,7 +47,8 @@ var config = {
     contentBase: path.join(__dirname, "src/client"),
     compress: true,
     port: 8080,
-    publicPath: '/public'
+    publicPath: '/public',
+    historyApiFallback: true
   }
 };
 
