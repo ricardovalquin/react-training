@@ -9,7 +9,7 @@ class App extends React.Component {
   render () {
     return <div>
       <p> Hello React!</p>
-      <AwesomeComponent name="Camilo"/>
+      <AwesomeComponent name="Mateo"/>
       <Clock locale="zh-Hans-CN" timeZone="Asia/Shanghai"/>
       <Clock locale="zh-Hans-CN" timeZone="America/New_York"/>
       <Clock locale="us" timeZone="America/New_York"/>

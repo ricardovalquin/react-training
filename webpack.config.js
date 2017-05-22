@@ -12,9 +12,19 @@ var config = {
   module : {
     loaders : [
       {
-        test : /\.jsx?/,
-        include : APP_DIR,
-        loader : 'babel-loader'
+        test: /\.jsx$/,
+        include: APP_DIR,
+        loader: 'babel-loader',
+        query: {
+          cacheDirectory: true,
+          presets: ['es2015', 'es2016', 'react'],
+          plugins: [
+            'babel-plugin-syntax-trailing-function-commas',
+            'babel-plugin-transform-class-properties',
+            'babel-plugin-transform-object-rest-spread'
+          ]
+        },
+        exclude: /node_modules/
       }
     ]
   },
