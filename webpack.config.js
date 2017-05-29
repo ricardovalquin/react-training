@@ -27,10 +27,11 @@ var config = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         use: [
           'style-loader',
           'css-loader',
+          'sass-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -40,6 +41,10 @@ var config = {
             }
           }
         ]
+      },
+      {
+        test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader?name=[hash:6].[ext]'
       }
     ]
   },
@@ -47,7 +52,7 @@ var config = {
     contentBase: path.join(__dirname, "src/client"),
     compress: true,
     port: 8080,
-    publicPath: '/public',
+    publicPath: '/',
     historyApiFallback: true
   }
 };
