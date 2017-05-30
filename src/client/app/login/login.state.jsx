@@ -3,7 +3,9 @@ import Login from './Login.component.jsx'
 const loginState = {
   name: 'login',
   url: '/login',
-  component: Login
+  views: {
+    'main': Login
+  },
 };
 
 export default loginState;

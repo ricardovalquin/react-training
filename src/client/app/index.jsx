@@ -8,6 +8,8 @@ class App extends React.Component {
     return (
       <UIRouter plugins={[pushStateLocationPlugin]} states={states}>
         <div>
+          <span>me</span>
+          <UISref to="login"><a>Hello</a></UISref>
           <UIView name="main"/>
         </div>
       </UIRouter>
