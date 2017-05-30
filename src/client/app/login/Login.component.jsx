@@ -28,7 +28,7 @@ class Login extends React.Component {
 
   loginUser(user) {
     if(user.email == 'mateo@mateo.com' && user.password == 'test4echo'){
-      console.log('logged in');
+      this.props.transition.router.stateService.go('dashboard.day');
     } else {
       console.log('information error');
     }
@@ -36,25 +36,29 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="row text-center">
-        <div className="col-12">
-          <img src={require("./resources/coffee-time.png")}/>
+      <div className="login">
+        <div className="container d-flex align-items-center justify-content-center">
+          <div className="text-center">
+            <div className="">
+              <img src={require("./resources/coffee-time.png")}/>
+            </div>
+            <form className="" onSubmit={this.handleSubmit}>
+              <div className="form-group">
+                <label>
+                  email
+                </label>
+                <input className="form-control" type="email" ref={(input) => this.email = input} />
+              </div>
+              <div className="form-group">
+                <label>
+                  password
+                </label>
+                <input className="form-control" type="password" value={this.state.password} onChange={this.handlePasswordChange}/>
+              </div>
+              <input className="btn btn-primary" type="submit" value="Submit" />
+            </form>
+          </div>
         </div>
-        <form className="col-12" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label>
-              email
-            </label>
-            <input className="form-control" type="email" ref={(input) => this.email = input} />
-          </div>
-          <div className="form-group">
-            <label>
-              password
-            </label>
-            <input className="form-control" type="password" value={this.state.password} onChange={this.handlePasswordChange}/>
-          </div>
-          <input className="btn btn-primary" type="submit" value="Submit" />
-        </form>
       </div>
     );
   }

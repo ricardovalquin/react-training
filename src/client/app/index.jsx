@@ -8,7 +8,7 @@ class App extends React.Component {
   render () {
     return (
       <UIRouter config={stateConfig} plugins={[pushStateLocationPlugin]}>
-        <UIView className="container" name="main"/>
+        <UIView name="main"/>
       </UIRouter>
     );
   }
