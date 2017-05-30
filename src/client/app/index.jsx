@@ -1,17 +1,14 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {UIRouter, UIView, UISref, UISrefActive, pushStateLocationPlugin} from 'ui-router-react';
-import states from './app.states.jsx';
+import stateConfig from './app-state.config.jsx';
+
 
 class App extends React.Component {
   render () {
     return (
-      <UIRouter plugins={[pushStateLocationPlugin]} states={states}>
-        <div>
-          <span>me</span>
-          <UISref to="login"><a>Hello</a></UISref>
-          <UIView name="main"/>
-        </div>
+      <UIRouter config={stateConfig} plugins={[pushStateLocationPlugin]}>
+        <UIView className="container" name="main"/>
       </UIRouter>
     );
   }
